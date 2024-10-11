@@ -10,21 +10,21 @@ class MyForm(QDialog):
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self.ui.businessButton.toggled.connect(self.calculate)
-        self.ui.economyButton.toggled.connect(self.calculate)
-        self.ui.firstButton.toggled.connect(self.calculate)
+        self.ui.businessBox.toggled.connect(self.calculate)
+        self.ui.economicBox.toggled.connect(self.calculate)
+        self.ui.firstBox.toggled.connect(self.calculate)
         self.show()
 
     def calculate(self):
         price = 0
-        if self.ui.businessButton.isChecked():
-            price = 300
-        elif self.ui.economyButton.isChecked():
-            price = 5
-        elif self.ui.firstButton.isChecked():
-            price = 500
+        if self.ui.businessBox.isChecked():
+            price += 300
+        if self.ui.economicBox.isChecked():
+            price += 5
+        if self.ui.firstBox.isChecked():
+            price += 500
 
-        self.ui.resultLabel.setText(f'Price: {price}')
+        self.ui.resultLabel.setText(f'Cena: {price}')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
